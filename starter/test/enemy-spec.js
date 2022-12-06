@@ -170,10 +170,11 @@ describe ('Enemy', function () {
     room.connectRooms('w', westRoom);
 
     enemy.cooldown = 0;
-
+    // console.log(enemy.currentRoom)
     expect(enemy.currentRoom).to.equal(room);
 
     enemy.randomMove();
+    // console.log(enemy.currentRoom)
 
     expect(enemy.currentRoom).to.equal(westRoom);
     expect(enemy.cooldown).above(0);
