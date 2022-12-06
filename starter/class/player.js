@@ -35,25 +35,48 @@ class Player extends Character {
 
   takeItem(itemName) {
 
-    // Fill this in
+    let room = this.currentRoom;
+    let item = room.getItemByName(itemName); //finds item name
+    this.items.push(item);  //adds item name to player inventory
+    room.items.splice(room.items.indexOf(item), 1); //removes item from the room
 
   }
 
   dropItem(itemName) {
-
-    // Fill this in
+    let item = this.getItemByName(itemName) //finds item name
+    this.currentRoom.items.push(item); //adds item to the room
+    this.items.splice(this.items.indexOf(item), 1); //removes item from player inventory
 
   }
 
   eatItem(itemName) {
 
-    // Fill this in
+    let item = this.getItemByName(itemName);    //finds item name
+
+    if(item instanceof Food) {  //checks if food
+        this.items.splice(this.items.indexOf(item)); //removes item from inventory
+
+    } else {
+        console.log(`${itemName} cannot be eaten`);
+    }
 
   }
 
   getItemByName(name) {
 
-    // Fill this in
+    let items = this.items;
+
+    //finds index for the item by name
+    let index = null;
+    items.forEach((item, i) => {
+        if(item.name === name) {
+            index = i;
+        }
+    })
+
+    //returns the item using the index
+    let item = items[index];
+    return item;
 
   }
 

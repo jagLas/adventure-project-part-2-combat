@@ -52,15 +52,26 @@ class Room {
   }
 
   getItemByName(name) {
+    let items = this.items;
+    let index = null;
 
-    // Fill this in
+    //finds the index for the item by name
+    for (let i = 0; i < items.length; i++){
+        let item = items[i];
+        if (item.name === name) {
+            index = i;
+        }
+    }
 
+    //uses item index to return the item object
+    let item = items[index];
+    return item;
   }
 
   getEnemyByName(name) {
 
     // Fill this in
-
+  }
 }
 
 module.exports = {
