@@ -30,13 +30,3 @@ enemy.items.push(item);
 room.items.push(sandwich);
 
 //before each do above
-
-debugger
-player.hit('bill')
-
-// enemy.cooldown = 0;
-
-//     console.log(player.health)
-//     enemy.attack();
-//     console.log(player.health)
-//     expect(enemy.cooldown).above(0);

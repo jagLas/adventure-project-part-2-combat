@@ -25,7 +25,7 @@ class Character {
       this.currentRoom.items.push(inventory[0]);
       inventory.shift();
     }
-
+    console.log(`The ${this.name} has died.`)
     this.currentRoom = null;
   }
   

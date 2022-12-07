@@ -51,6 +51,7 @@ class Enemy extends Character {
   attack() {
     if (this.player && this.player.currentRoom === this.currentRoom) {
       this.attackTarget.applyDamage(this.strength);
+      console.log(`You have been hit for ${this.strength} damage!`)
     }
     this.rest()
   }
@@ -58,9 +59,11 @@ class Enemy extends Character {
   act() {
     if (this.health <= 0) {
       // Dead, do nothing;
-    } else {
+    } else if (!this.attackTarget) { //checks if it's targeting player
       this.scratchNose();
       this.rest();
+    } else {
+      this.attack(this.attackTarget); //attacks the player
     }
 
     // Fill this in

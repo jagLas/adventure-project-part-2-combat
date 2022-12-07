@@ -82,14 +82,14 @@ class Player extends Character {
 
   hit(name) {
     let target = this.currentRoom.getEnemyByName(name); //finds the target in the room
-    
+
     // console.log(target)
     if (target){
       target.applyDamage(this.strength);  //attacks target by strength value
       target.attackTarget = this; //sets enemies attack target attribute to the player
-      console.log(`You hit the ${name}`);
+      console.log(`You hit the ${name} for ${this.strength} damage.`);
     } else {
-      console.log(`There is no ${name} to hit`);
+      console.log(`There is no ${name} to hit.`);
     }
   }
 
