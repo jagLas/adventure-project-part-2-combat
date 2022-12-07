@@ -31,8 +31,8 @@ room.items.push(sandwich);
 
 //before each do above
 
-
-// player.hit('enemy')
+debugger
+player.hit('bill')
 
 // enemy.cooldown = 0;
 

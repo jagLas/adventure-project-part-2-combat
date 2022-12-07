@@ -67,7 +67,7 @@ class Enemy extends Character {
     } else if (this.cooldown > 0) {
       this.rest();
     } else {
-      this.scratchNose();
+      // this.scratchNose();
       this.rest();
     }
 
