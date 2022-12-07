@@ -48,7 +48,17 @@ class Enemy extends Character {
   }
 
   takeSandwich() {
-    // Fill this in
+    let item = this.currentRoom.getItemByName('sandwich');
+    if (item === undefined) {
+
+    } else {
+        this.items.push(item);  //adds item name to player inventory
+        this.currentRoom.items.splice(this.currentRoom.items.indexOf(item), 1); //removes item from the room
+        console.log(`The enemy takes a sandwich`)
+    }
+
+    this.rest();
+    
   }
 
   // Print the alert only if player is standing in the same room
@@ -82,11 +92,14 @@ class Enemy extends Character {
 
     if (this.health <= 0) {
       // Dead, do nothing;
+      return;
+    } else if (this.currentRoom.getItemByName('sandwich')) { //checks if there is a sandwich
+      this.takeSandwich();
+      
     } else if (!this.attackTarget) { //checks if it's targeting player
       
-      // this.scratchNose();
       this.randomAct();
-      // this.rest();
+
     } else {
       this.attack(this.attackTarget); //attacks the player
     }
