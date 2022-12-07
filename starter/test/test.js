@@ -12,12 +12,31 @@ const {Enemy} = require("../class/enemy.js");
 
 //DO NOT MODIFY ABOVE
 
-let character;
+let player;
+let enemy;
 let room;
 let item;
 
-room =  new Room("Test Room", "A test room");
+room = new Room("Test Room", "A test room");
 item = new Item("rock", "just a simple rock");
-character = new Character('Character', 'an ordinary character', room);
-character.items.push(item);
-character.die();
+sandwich = new Food("sandwich", "a delicious looking sandwich");
+enemy = new Enemy('enemy', 'an ordinary character', room);
+player = new Player("player", room);
+
+World.enemies.push(enemy);
+World.setPlayer(player);
+
+enemy.items.push(item);
+room.items.push(sandwich);
+
+//before each do above
+
+
+// player.hit('enemy')
+
+// enemy.cooldown = 0;
+
+//     console.log(player.health)
+//     enemy.attack();
+//     console.log(player.health)
+//     expect(enemy.cooldown).above(0);

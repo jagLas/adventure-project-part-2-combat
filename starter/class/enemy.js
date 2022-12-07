@@ -5,6 +5,8 @@ class Enemy extends Character {
   constructor(name, description, currentRoom) {
     super(name, description, currentRoom);
     this.cooldown = 0;
+    this.attackTarget = null;
+    //uncomment line below to turn on enemy cooldown behavior
     this.act();
   }
 
@@ -46,12 +48,16 @@ class Enemy extends Character {
   }
 
   attack() {
-    // Fill this in
+    if (this.player && this.player.currentRoom === this.currentRoom) {
+      this.attackTarget.applyDamage(this.strength);
+    }
+    this.rest()
   }
 
-  applyDamage(amount) {
-    // Fill this in
-  }
+  //this seems unecessary as it is inherited from the character class
+  // applyDamage(amount) {
+  //   // Fill this in
+  // }
 
 
 

@@ -69,8 +69,18 @@ class Room {
   }
 
   getEnemyByName(name) {
+    let enemies = this.getEnemies(); //creates array of enemies in room.
+    
+    //checks the name of each enemy and sets that enemy as target if found
+    let target;
+    enemies.forEach(enemy => {
+      if (enemy.name === name) {
+        target = enemy;
+      }
+    })
 
-    // Fill this in
+    return target;
+
   }
 }
 
