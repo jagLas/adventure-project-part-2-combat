@@ -79,20 +79,35 @@ class Enemy extends Character {
   }
 
   act() {
+
     if (this.health <= 0) {
       // Dead, do nothing;
     } else if (!this.attackTarget) { //checks if it's targeting player
+      
       // this.scratchNose();
-      this.randomMove();
+      this.randomAct();
       // this.rest();
     } else {
       this.attack(this.attackTarget); //attacks the player
     }
   }
 
+  randomAct() {
+    let options = 2;
+    let choice = Math.floor(Math.random() * options);
+
+    if (choice === 0) {
+      this.randomMove();
+    } else if (choice === 1) {
+      this.scratchNose();
+    }
+
+  }
+
   scratchNose() {
 
     this.alert(`${this.name} scratches its nose`);
+    this.rest();
 
   }
 }

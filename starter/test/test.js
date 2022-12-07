@@ -12,21 +12,26 @@ const {Enemy} = require("../class/enemy.js");
 
 //DO NOT MODIFY ABOVE
 
-let player;
-let enemy;
-let room;
-let item;
+// let player;
+// let enemy;
+// let room;
+// let item;
 
-room = new Room("Test Room", "A test room");
-item = new Item("rock", "just a simple rock");
-sandwich = new Food("sandwich", "a delicious looking sandwich");
-enemy = new Enemy('enemy', 'an ordinary character', room);
-player = new Player("player", room);
+// room = new Room("Test Room", "A test room");
+// item = new Item("rock", "just a simple rock");
+// sandwich = new Food("sandwich", "a delicious looking sandwich");
+// enemy = new Enemy('enemy', 'an ordinary character', room);
+// player = new Player("player", room);
 
-World.enemies.push(enemy);
-World.setPlayer(player);
+// World.enemies.push(enemy);
+// World.setPlayer(player);
 
-enemy.items.push(item);
-room.items.push(sandwich);
+// enemy.items.push(item);
+// room.items.push(sandwich);
 
 //before each do above
+
+let options = 2;
+let choice = Math.floor(Math.random() * options);
+
+console.log(choice);
