@@ -37,12 +37,14 @@ describe('Poison', function () {
         expect(item instanceof Item).to.be.true;
     })
 
-    it('should have a name, description, and damage property set at creation', function () {
-
+    it('should have a name, description, and damageValue property set at creation', function () {
+        expect(poison.name).to.be.equal('minor poison');
+        expect(poison.description).to.be.equal('a noxious poison');
+        expect(poison.damageValue).to.be.equal(10)
     })
 
     it('should hurt the player when consumed by the damage properties amount', function (){
-
+        expect()
     })
 
     // it('can be applied to a weapon to increase the damage by its damage property', function () {
