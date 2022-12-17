@@ -4,10 +4,8 @@ const {Player} = require("../class/player.js");
 const {Room} = require("../class/room.js");
 const {Item} = require("../class/item.js");
 const {Food} = require("../class/food.js");
-const {World} = require("../class/world.js");
-const {Character} = require("../class/character.js");
 const {Enemy} = require("../class/enemy.js");
-const {Poison} = require('../class/poison.js')
+const {Poison} = require('../class/poison.js');
 
 //DO NOT MODIFY ABOVE
 
@@ -35,7 +33,7 @@ describe('Poison', function () {
         expect(food instanceof Item).to.be.true;
 
         expect(item instanceof Food).to.be.false;
-        expect(item instanceof Poison).to.be.true;
+        expect(item instanceof Poison).to.be.false;
         expect(item instanceof Item).to.be.true;
     })
 
@@ -47,7 +45,9 @@ describe('Poison', function () {
 
     it('should hurt the player when consumed by the damage properties amount', function (){
         let health = player.health;
-        console.log(health);
+        player.eatItem('poison');
+        let newHealth = player.health;
+        expect(health - newHealth).to.equal(poison.damageValue);
     })
 
     // it('can be applied to a weapon to increase the damage by its damage property', function () {
