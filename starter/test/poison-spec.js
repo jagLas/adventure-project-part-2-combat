@@ -7,21 +7,23 @@ const {Food} = require("../class/food.js");
 const {World} = require("../class/world.js");
 const {Character} = require("../class/character.js");
 const {Enemy} = require("../class/enemy.js");
+const {Poison} = require('../class/poison.js')
 
 //DO NOT MODIFY ABOVE
 
-let room, item, sandwich, poison, enemy, player;
+let room, item, poison, player, food, enemy;
 
 describe('Poison', function () {
 
-    this.beforeEach(function () {
+    beforeEach( () => {
         room = new Room("Test Room", "A test room");
         item = new Item("rock", "just a simple rock");
-        sandwich = new Food("sandwich", "a delicious looking sandwich");
-        poison = new Poison('minor poison', "a noxious poison", 10)
+        food = new Food("sandwich", "a delicious looking sandwich");
+        poison = new Poison('minor poison', "a noxious poison", 10);
         enemy = new Enemy('enemy', 'an ordinary character', room);
         player = new Player("player", room);
     })
+
 
     it('should inherit from food class', function(){
         expect(poison instanceof Food).to.be.true;
@@ -44,7 +46,8 @@ describe('Poison', function () {
     })
 
     it('should hurt the player when consumed by the damage properties amount', function (){
-        expect()
+        let health = player.health;
+        console.log(health);
     })
 
     // it('can be applied to a weapon to increase the damage by its damage property', function () {
