@@ -2,6 +2,7 @@ const {Character} = require('./character');
 const {Enemy} = require('./enemy');
 const {Food} = require('./food');
 const {Weapon} = require('./weapon')
+const {Poison} = require('./poison')
 
 class Player extends Character {
 
@@ -54,7 +55,13 @@ class Player extends Character {
 
     let item = this.getItemByName(itemName);    //finds item name
 
+    if(item instanceof Poison) {
+      console.log(`You were hurt for ${item.damageValue} damage!`)
+      this.health -= item.damageValue;
+    }
+
     if(item instanceof Food) {  //checks if food
+      // console.log(item);
         this.items.splice(this.items.indexOf(item)); //removes item from inventory
 
     } else {

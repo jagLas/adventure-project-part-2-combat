@@ -6,6 +6,8 @@ const {Item} = require("../class/item.js");
 const {Food} = require("../class/food.js");
 const {Enemy} = require("../class/enemy.js");
 const {Poison} = require('../class/poison.js');
+const {World} = require('../class/world')
+
 
 //DO NOT MODIFY ABOVE
 
@@ -20,6 +22,9 @@ describe('Poison', function () {
         poison = new Poison('minor poison', "a noxious poison", 10);
         enemy = new Enemy('enemy', 'an ordinary character', room);
         player = new Player("player", room);
+        World.enemies.push(enemy);
+        World.setPlayer(player);
+        room.items.push(poison);
     })
 
 
@@ -45,12 +50,11 @@ describe('Poison', function () {
 
     it('should hurt the player when consumed by the damage properties amount', function (){
         let health = player.health;
-        player.eatItem('poison');
+        player.takeItem('minor poison');
+
+        player.eatItem('minor poison');
         let newHealth = player.health;
         expect(health - newHealth).to.equal(poison.damageValue);
     })
 
-    // it('can be applied to a weapon to increase the damage by its damage property', function () {
-
-    // })
 });
