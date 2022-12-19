@@ -30,7 +30,4 @@ enemy.items.push(item);
 room.items.push(sandwich);
 
 //before each do above
-console.log(room.items);
 enemy.act()
-console.log(enemy.items);
-console.log(room.items);

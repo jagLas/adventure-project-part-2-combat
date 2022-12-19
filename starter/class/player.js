@@ -1,6 +1,8 @@
 const {Character} = require('./character');
 const {Enemy} = require('./enemy');
 const {Food} = require('./food');
+const {Weapon} = require('./weapon')
+const {Poison} = require('./poison')
 
 class Player extends Character {
 
@@ -53,7 +55,13 @@ class Player extends Character {
 
     let item = this.getItemByName(itemName);    //finds item name
 
+    if(item instanceof Poison) {
+      console.log(`You were hurt for ${item.damageValue} damage!`)
+      this.health -= item.damageValue;
+    }
+
     if(item instanceof Food) {  //checks if food
+      // console.log(item);
         this.items.splice(this.items.indexOf(item)); //removes item from inventory
 
     } else {
@@ -83,11 +91,23 @@ class Player extends Character {
   hit(name) {
     let target = this.currentRoom.getEnemyByName(name); //finds the target in the room
 
-    // console.log(target)
+    //filters inventory to weapons only
+    let weapons = this.items.filter(item => {
+      return item instanceof Weapon === true;
+    })
+
+    let attack;
+    //applies damage of first weapon in inventory to attack, otherwise only adds strength.
+    if (weapons[0] instanceof Weapon) {
+      attack = this.strength + weapons[0].damageValue;
+    } else {
+      attack = this.strength;
+    }
+
     if (target){
-      target.applyDamage(this.strength);  //attacks target by strength value
+      target.applyDamage(attack);  //attacks target by strength value
       target.attackTarget = this; //sets enemies attack target attribute to the player
-      console.log(`You hit the ${name} for ${this.strength} damage.`);
+      console.log(`You hit the ${name} for ${attack} damage.`);
     } else {
       console.log(`There is no ${name} to hit.`);
     }
