@@ -4,6 +4,7 @@ const { Item } = require('../class/item');
 const {Player} = require("../class/player.js");
 const {Room} = require("../class/room.js");
 const {Enemy} = require("../class/enemy.js");
+const {World} = require('../class/world')
 
 describe('Weapon class', function (){
 
@@ -13,6 +14,11 @@ describe('Weapon class', function (){
         enemy = new Enemy('enemy', 'an ordinary character', room);
         player = new Player("player", room);
         weapon = new Weapon('sword', 'an ordinary sword', 10);
+    
+        World.enemies.push(enemy);
+        World.setPlayer(player);
+    
+        enemy.items.push(item);
     })
 
     it ('should inherit from the Item class', function (){
@@ -29,8 +35,6 @@ describe('Weapon class', function (){
         expect(weapon.damageValue).to.equal(10);
     })
 
-
-    //neds to debug why not hitting enemy
     it ('should increase the damage of an attack when held by a player', function (){
         let initialHealth = enemy.health;
         player.hit('enemy');
