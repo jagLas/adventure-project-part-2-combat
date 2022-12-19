@@ -14,7 +14,7 @@ describe('Weapon class', function (){
         enemy = new Enemy('enemy', 'an ordinary character', room);
         player = new Player("player", room);
         weapon = new Weapon('sword', 'an ordinary sword', 10);
-    
+        room.items.push(weapon);
         World.enemies.push(enemy);
         World.setPlayer(player);
     
@@ -37,19 +37,23 @@ describe('Weapon class', function (){
 
     it ('should increase the damage of an attack when held by a player', function (){
         let initialHealth = enemy.health;
+
         player.hit('enemy');
         let firstAttack = initialHealth - enemy.health;
+
         player.takeItem('sword');
         let secondHealth = enemy.health;
+
         player.hit('enemy');
         let secondAttack = secondHealth - enemy.health;
+
 
         expect(secondAttack).to.equal(firstAttack + weapon.damageValue);
     })
 
     it('should have a method modifyDamage(num) that changes the damage value', function (){
         let initial = weapon.damageValue;
-        weapon.modifyDamageValue(10);
+        weapon.modifyDamage(10);
         expect(weapon.damageValue).to.equal(initial + 10);
     })
 })
